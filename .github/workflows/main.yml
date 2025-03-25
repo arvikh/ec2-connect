@@ -1,0 +1,18 @@
+name: SSH to EC2 Instance
+
+on:
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions UI
+
+jobs:
+  ssh_to_ec2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into EC2 Instance
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_IP }}
+          username: ${{ secrets.EC2_USER }} # e.g., ubuntu, ec2-user
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            echo "hello world"
