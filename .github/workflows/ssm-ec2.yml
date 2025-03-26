@@ -17,11 +17,8 @@ jobs:
 
       - name: Run Hello World and Get Output
         run: |
-          INSTANCE_ID="${{ secrets.EC2_INSTANCE_ID }}"
-            COMMAND="echo 'Hello, World!'"
-            COMMAND_ID=$(aws ssm send-command \
-              --instance-ids "$INSTANCE_ID" \
-              --document-name "AWS-RunShellScript" \
-              --parameters "commands=[\"$COMMAND\"]" \
-              --output text)
+          aws ssm send-command \
+            --instance-ids ${{ secrets.EC2_INSTANCE_ID}} \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=["echo Connected to EC2 via Session Manager"]'
           
