@@ -30,6 +30,7 @@ jobs:
         id : output_execution
         run: |
           sleep 15s
+          echo ${{ steps.execute_command.outputs.command_id }}
           COMMAND_ID=${{ steps.execute_command.outputs.command_id }}
           aws ssm list-command-invocations \
             --details \
