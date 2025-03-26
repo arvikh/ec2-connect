@@ -23,8 +23,5 @@ jobs:
               --instance-ids "$INSTANCE_ID" \
               --document-name "AWS-RunShellScript" \
               --parameters "commands=[\"$COMMAND\"]" \
-              --query "Command.CommandId" \
               --output text)
-            echo "COMMAND_ID=$COMMAND_ID"
-            echo "COMMAND_ID=$COMMAND_ID" >> $GITHUB_OUTPUT
-            echo "SSM_COMMAND_ID=$COMMAND_ID" >> $GITHUB_ENV
+          
